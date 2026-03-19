@@ -165,7 +165,6 @@ export function Hero() {
                   {[
                     { label: 'FAQ', href: '/faq' },
                     { label: 'Blog', href: '/blog' },
-                    { label: 'Pflege', href: '/care' },
                   ].map((item) => (
                     <button
                       key={item.label}
@@ -194,6 +193,7 @@ export function Hero() {
                 <div className="absolute top-full right-0 mt-4 w-48 bg-paper border border-charcoal/10 py-3">
                   {[
                     { label: 'Tattoo Entfernung', href: '/tattoo-removal' },
+                    { label: 'Pflegeempfehlung', href: '/care' },
                     { label: 'Piercing', href: '#piercing' },
                   ].map((item) => (
                     <button
@@ -247,8 +247,8 @@ export function Hero() {
               { label: 'Studio', href: '/studio' },
               { label: 'FAQ', href: '/faq' },
               { label: 'Blog', href: '/blog' },
-              { label: 'Pflege', href: '/care' },
               { label: 'Tattoo Entfernung', href: '/tattoo-removal' },
+              { label: 'Pflegeempfehlung', href: '/care' },
             ].map((item) => (
               <button
                 key={item.label}

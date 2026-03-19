@@ -114,6 +114,16 @@ export function FAQ() {
               />
             ))}
           </div>
+
+          {/* More Button */}
+          <div className="mt-12 text-center">
+            <a
+              href="/faq"
+              className="inline-block px-10 py-3 border border-charcoal/15 text-[11px] tracking-archive uppercase text-charcoal hover:bg-charcoal hover:text-paper transition-all duration-500"
+            >
+              Alle Fragen ansehen
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -83,8 +83,9 @@ export function Piercing() {
             <p className="text-[11px] tracking-archive uppercase text-charcoal/70 mb-6">
               In Kooperation mit Mayduna
             </p>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl tracking-archive uppercase text-charcoal">
-              {piercingConfig.title}
+            <h2 className="text-2xl md:text-3xl lg:text-4xl tracking-archive uppercase text-charcoal leading-relaxed">
+              Mehr als nur Tattoos:<br />
+              Piercings bei Mayduna
             </h2>
           </div>
           <div className="flex items-end">

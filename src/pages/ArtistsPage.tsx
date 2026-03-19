@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Instagram } from 'lucide-react';
-import { artistsConfig } from '../config';
+import { artistsConfig, tattooStylesConfig } from '../config';
 
-const allStyles = ['Alle', ...new Set(artistsConfig.artists.flatMap(a => a.styles))];
+const allStyles = ['Alle', ...tattooStylesConfig.styles.map(s => s.name)];
 
 export default function ArtistsPage() {
   const [activeStyle, setActiveStyle] = useState('Alle');
@@ -37,19 +37,25 @@ export default function ArtistsPage() {
           <img src="/images/studio/JollySchwarz-4211.webp" alt="True Canvas Studio" className="w-full aspect-[21/9] object-cover grayscale" loading="lazy" />
         </div>
 
-        {/* Style Filter */}
-        <div className="flex flex-wrap gap-3 mb-12 border-b border-charcoal/10 pb-6">
-          {allStyles.map(s => (
-            <button
-              key={s}
-              onClick={() => setActiveStyle(s)}
-              className={`text-[11px] tracking-journal uppercase transition-all duration-300 pb-1 ${
-                activeStyle === s ? 'text-charcoal border-b border-charcoal' : 'text-charcoal/60 hover:text-charcoal'
-              }`}
-            >
-              {s}
-            </button>
-          ))}
+        {/* Style Filter — horizontal scroll */}
+        <div className="relative mb-12">
+          <div className="overflow-x-auto scrollbar-hide -mx-6 px-6 md:-mx-12 md:px-12">
+            <div className="flex gap-2 pb-6 border-b border-charcoal/10 min-w-max">
+              {allStyles.map(s => (
+                <button
+                  key={s}
+                  onClick={() => setActiveStyle(s)}
+                  className={`text-[10px] tracking-journal uppercase transition-all duration-300 px-4 py-2 shrink-0 ${
+                    activeStyle === s
+                      ? 'text-charcoal bg-charcoal/5 border border-charcoal/20'
+                      : 'text-charcoal/60 border border-transparent hover:border-charcoal/10 hover:text-charcoal'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Artists Grid */}
