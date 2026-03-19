@@ -208,8 +208,10 @@ export function Hero() {
               )}
             </div>
 
-            <button
-              onClick={() => handleNavClick('#contact')}
+            <a
+              href="https://form.jotform.com/210883790627060"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`text-[11px] tracking-journal uppercase px-6 py-3 border transition-all duration-500 ${
                 navScrolled
                   ? 'border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-paper'
@@ -217,7 +219,7 @@ export function Hero() {
               }`}
             >
               Termin anfragen
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -258,12 +260,14 @@ export function Hero() {
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={() => handleNavClick('#contact')}
+            <a
+              href="https://form.jotform.com/210883790627060"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`text-[11px] tracking-journal uppercase px-6 py-3 border self-start transition-colors ${navScrolled ? 'border-charcoal/20 text-charcoal' : 'border-white/30 text-white'}`}
             >
               Termin anfragen
-            </button>
+            </a>
           </div>
         </div>
       </nav>

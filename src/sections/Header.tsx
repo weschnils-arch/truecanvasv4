@@ -138,12 +138,14 @@ export function Header() {
             )}
           </div>
 
-          <button
-            onClick={() => handleNavClick('#contact')}
+          <a
+            href="https://form.jotform.com/210883790627060"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[11px] tracking-journal uppercase px-6 py-3 border border-charcoal/20 text-charcoal transition-all duration-500 hover:bg-charcoal hover:text-paper"
           >
             Termin anfragen
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -184,12 +186,14 @@ export function Header() {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => handleNavClick('#contact')}
+          <a
+            href="https://form.jotform.com/210883790627060"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-[11px] tracking-journal uppercase px-6 py-3 border border-charcoal/20 text-charcoal self-start"
           >
             Termin anfragen
-          </button>
+          </a>
         </div>
       </div>
     </nav>
