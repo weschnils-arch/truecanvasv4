@@ -32,7 +32,7 @@ export function Footer() {
       <div className="footer-content max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-28">
         {/* Logo */}
         <div className="flex items-center gap-4 mb-16 md:mb-20">
-          <img src={logoSrc} alt="True Canvas Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+          <img src={logoSrc} alt="True Canvas Logo" className="w-8 h-8 md:w-10 md:h-10 object-contain" loading="lazy" />
           <span className="text-lg tracking-archive uppercase text-charcoal">
             TRUE CANVAS
           </span>

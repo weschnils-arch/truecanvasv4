@@ -393,7 +393,7 @@ function HomePage() {
       {/* ─── FULL-WIDTH STUDIO ─── */}
       <div ref={parallaxWrapRef} className="parallax-container w-full h-[50vh] md:h-[70vh] my-8 md:my-16">
         <img ref={parallaxImgRef} src="/images/studio/JollySchwarz-4173.webp" alt="True Canvas Studio"
-          className="parallax-image w-full h-[130%] object-cover" />
+          className="parallax-image w-full h-[130%] object-cover" loading="lazy" />
       </div>
 
       <Divider />
