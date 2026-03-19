@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Search } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const posts = [
   {
@@ -55,7 +58,7 @@ const posts = [
     category: 'Urheberrecht',
     date: 'November 2025',
     excerpt: 'Der Anspruch eines Tätowierten ist es, etwas Einzigartiges unter die Haut zu bekommen. Doch wie sieht die Rechtslage aus?',
-    image: '/images/studio/JollySchwarz-4268.webp',
+    image: '/images/studio/JollySchwarz-4173.webp',
   },
   {
     id: 7,
@@ -64,7 +67,7 @@ const posts = [
     category: 'Tattoo',
     date: 'Oktober 2025',
     excerpt: 'Sogenannte Tattoo Gurken — ein Begriff für besonders misslungene Tätowierungen. Wie es dazu kommt und wie man sie vermeidet.',
-    image: '/images/studio/JollySchwarz-4295.webp',
+    image: '/images/studio/JollySchwarz-4017.webp',
   },
   {
     id: 8,
@@ -97,52 +100,70 @@ export default function BlogPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const ctx = gsap.context(() => {
-      gsap.from('.blog-header', { y: 40, opacity: 0, duration: 1, ease: 'power3.out' });
+      gsap.fromTo('.blog-eyebrow', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
+      gsap.fromTo('.blog-title', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.1, ease: 'power3.out' });
+      gsap.fromTo('.blog-intro', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, delay: 0.2, ease: 'power3.out' });
     }, containerRef);
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.blog-article',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.08, duration: 0.6, ease: 'power3.out' }
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, [activeCategory, search]);
+
+  // Featured post is the first one
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
+
   return (
-    <div ref={containerRef} className="bg-[#F7F6F4] min-h-screen font-sans pb-32">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
-
-        {/* Header */}
-        <div className="blog-header text-center mb-16">
-          <p className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-4">
-            Wissen & Inspiration
-          </p>
-          <h1 className="text-4xl md:text-5xl font-sans tracking-[0.15em] uppercase mb-6">
-            Tattoo Blog
-          </h1>
-          <p className="font-serif italic text-lg text-charcoal/70 max-w-2xl mx-auto leading-relaxed">
-            Wir beantworten häufig gestellte Fragen rund ums Thema Tätowieren, die den Rahmen der FAQs sprengen.
-          </p>
+    <div ref={containerRef} className="bg-paper min-h-screen pb-32">
+      {/* Hero */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 pt-12 pb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          <div>
+            <p className="blog-eyebrow text-[11px] heading-caps text-charcoal/50 mb-6">Wissen & Inspiration</p>
+            <h1 className="blog-title text-5xl md:text-7xl heading-caps leading-[0.95]">
+              Tattoo-Blog
+            </h1>
+          </div>
+          <div className="flex items-end">
+            <p className="blog-intro serif-italic text-lg text-charcoal/55 max-w-md leading-relaxed">
+              Hintergründe, Pflege-Tipps und alles rund ums Tätowieren — von unserem Team für dich geschrieben.
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Search + Filter */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-16 border-b border-charcoal/10 pb-8">
-          {/* Search */}
-          <div className="relative w-full md:w-80">
-            <Search className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal/60" />
+      <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
+
+      {/* Search + Filters */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-16">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="relative w-full md:w-72">
+            <Search className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-charcoal/40" />
             <input
               type="text"
               placeholder="Suche..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-transparent border-b border-charcoal/10 focus:border-charcoal/60 outline-none pl-7 pb-2 text-sm font-sans text-charcoal placeholder:text-charcoal/60 transition-colors"
+              className="w-full bg-transparent border-b border-charcoal/10 focus:border-charcoal/40 outline-none pl-7 pb-2 text-sm text-charcoal placeholder:text-charcoal/40 transition-colors"
             />
           </div>
-
-          {/* Category filters */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-[11px] tracking-journal uppercase transition-all duration-300 pb-1 ${
+                className={`text-[11px] heading-caps px-4 py-2 rounded-full border transition-all duration-300 ${
                   activeCategory === cat
-                    ? 'text-charcoal border-b border-charcoal'
-                    : 'text-charcoal/60 hover:text-charcoal'
+                    ? 'bg-charcoal text-paper border-charcoal'
+                    : 'text-charcoal/50 border-charcoal/12 hover:border-charcoal/30'
                 }`}
               >
                 {cat}
@@ -150,69 +171,87 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-          {filtered.map((post) => (
-            <article key={post.id} className="group cursor-pointer">
-              {/* Image */}
-              <div className="overflow-hidden mb-6">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Meta */}
-              <p className="text-[10px] tracking-archive uppercase text-charcoal/60 mb-3">
-                {post.category} — {post.date}
-              </p>
-
-              {/* Title */}
-              <h2 className="text-xl md:text-2xl font-sans tracking-[0.08em] uppercase text-charcoal mb-2 group-hover:text-charcoal/70 transition-colors">
-                {post.title}
+      {/* Featured Post */}
+      {featured && (
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-16 md:mb-24">
+          <article className="blog-article group cursor-pointer grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="overflow-hidden">
+              <img
+                src={featured.image}
+                alt={featured.title}
+                className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p className="text-[10px] heading-caps text-charcoal/40 mb-4">{featured.category} — {featured.date}</p>
+              <h2 className="text-2xl md:text-4xl heading-caps-tight leading-[1.1] mb-3 group-hover:text-charcoal/70 transition-colors">
+                {featured.title}
               </h2>
-
-              {/* Subtitle */}
-              <p className="font-serif italic text-sm text-charcoal/60 mb-4">
-                {post.subtitle}
-              </p>
-
-              {/* Excerpt */}
-              <p className="text-sm text-charcoal/70 leading-relaxed">
-                {post.excerpt}
-              </p>
-            </article>
-          ))}
+              <p className="serif-italic text-base text-charcoal/50 mb-5">{featured.subtitle}</p>
+              <p className="text-sm text-charcoal/60 leading-relaxed max-w-md">{featured.excerpt}</p>
+            </div>
+          </article>
         </div>
+      )}
 
-        {/* No results */}
-        {filtered.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-charcoal/60 font-serif italic text-lg">
-              Keine Beiträge gefunden.
-            </p>
-          </div>
-        )}
+      <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
 
-        {/* Recommended blogs */}
-        <div className="mt-32 border-t border-charcoal/10 pt-16">
-          <p className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-6">
-            Empfohlene externe Blogs
-          </p>
-          <div className="flex flex-wrap gap-8">
-            <a href="https://feelfarbig.de" target="_blank" rel="noopener noreferrer" className="text-sm text-charcoal/70 hover:text-charcoal transition-colors border-b border-charcoal/10 pb-0.5">
-              Feelfarbig
-            </a>
-            <a href="https://zumbuntspecht.de" target="_blank" rel="noopener noreferrer" className="text-sm text-charcoal/70 hover:text-charcoal transition-colors border-b border-charcoal/10 pb-0.5">
-              Zum Buntspecht
-            </a>
-            <a href="https://madlynevanlooy.com" target="_blank" rel="noopener noreferrer" className="text-sm text-charcoal/70 hover:text-charcoal transition-colors border-b border-charcoal/10 pb-0.5">
-              Madlyne van Looy
-            </a>
+      {/* Rest — magazine grid with varying sizes */}
+      {rest.length > 0 && (
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            {rest.map((post, i) => (
+              <article
+                key={post.id}
+                className={`blog-article group cursor-pointer ${i === 0 ? 'lg:col-span-2 lg:row-span-1' : ''}`}
+              >
+                <div className="overflow-hidden mb-5">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${
+                      i === 0 ? 'aspect-[21/9]' : 'aspect-[3/2]'
+                    }`}
+                    loading="lazy"
+                  />
+                </div>
+                <p className="text-[10px] heading-caps text-charcoal/40 mb-3">{post.category} — {post.date}</p>
+                <h3 className="text-lg md:text-xl heading-caps-tight leading-snug mb-2 group-hover:text-charcoal/70 transition-colors">
+                  {post.title}
+                </h3>
+                <p className="serif-italic text-sm text-charcoal/45 mb-3">{post.subtitle}</p>
+                <p className="text-sm text-charcoal/55 leading-relaxed">{post.excerpt}</p>
+              </article>
+            ))}
           </div>
+        </div>
+      )}
+
+      {filtered.length === 0 && (
+        <div className="text-center py-24 max-w-[1400px] mx-auto px-6">
+          <p className="serif-italic text-charcoal/50 text-lg">Keine Beiträge gefunden.</p>
+        </div>
+      )}
+
+      <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-16 md:my-24" />
+
+      {/* External Blogs */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        <p className="text-[11px] heading-caps text-charcoal/40 mb-6">Empfohlene externe Blogs</p>
+        <div className="flex flex-wrap gap-8">
+          {[
+            { name: 'Feelfarbig', url: 'https://feelfarbig.de' },
+            { name: 'Zum Buntspecht', url: 'https://zumbuntspecht.de' },
+            { name: 'Madlyne van Looy', url: 'https://madlynevanlooy.com' },
+          ].map(blog => (
+            <a key={blog.name} href={blog.url} target="_blank" rel="noopener noreferrer"
+              className="text-sm text-charcoal/55 hover:text-charcoal transition-colors border-b border-charcoal/10 pb-0.5">
+              {blog.name}
+            </a>
+          ))}
         </div>
       </div>
     </div>

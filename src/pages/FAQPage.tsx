@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { Plus, Minus } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,7 +33,7 @@ const faqs = [
     questions: [
       { q: 'Was kostet ein Tattoo?', a: 'Abgerechnet wird pro Stunde, der Stundensatz variiert von Künstler zu Künstler. Die Preise richten sich nach Größe, Details, ob es ein Color oder Black & Grey Tattoo wird und welche Körperstelle tätowiert wird. Bezahlt wird direkt nach dem Tätowieren in bar oder per Überweisung.' },
       { q: 'Wie hoch ist die Anzahlung?', a: 'Bei der Terminvereinbarung ist eine nicht refundierbare Anzahlung zwischen 100 und 200€ zu leisten, mit welcher dein Termin als bestätigt gilt. Diese wird beim letzten Termin angerechnet. Die Anzahlung ist notwendig, weil ab Terminbestätigung die Arbeit für den Tätowierer beginnt — Bildrecherche, Entwürfe und Zeichnungen.' },
-      { q: 'Ab welchem Alter tätowiert ihr?', a: 'Wir tätowieren ausnahmslos erst ab 18 Jahren. Auch eine Einverständniserklärung der Eltern ändert das nicht.' },
+      { q: 'Wie kann ich bezahlen?', a: 'Bezahlt wird direkt nach dem Tätowieren in bar oder per Überweisung. Kartenzahlung ist leider nicht möglich.' },
     ],
   },
   {
@@ -49,72 +49,111 @@ const faqs = [
   },
 ];
 
+function AccordionItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div className="border-b border-charcoal/8">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between py-5 md:py-6 text-left gap-4 group"
+      >
+        <span className="text-sm md:text-base text-charcoal/80 group-hover:text-charcoal transition-colors leading-snug pr-4">
+          {question}
+        </span>
+        <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+          {isOpen ? (
+            <Minus className="w-4 h-4 text-charcoal/40" />
+          ) : (
+            <Plus className="w-4 h-4 text-charcoal/40" />
+          )}
+        </span>
+      </button>
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+        style={{
+          maxHeight: isOpen ? contentRef.current?.scrollHeight + 'px' : '0px',
+          opacity: isOpen ? 1 : 0,
+        }}
+      >
+        <p className="text-sm text-charcoal/55 leading-relaxed pb-6 pr-10">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function FAQPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const ctx = gsap.context(() => {
-      gsap.from('.faq-header', { y: 40, opacity: 0, duration: 1, ease: 'power3.out' });
-      gsap.from('.faq-group', {
-        y: 50, opacity: 0, stagger: 0.15, duration: 0.8, ease: 'power3.out',
-        scrollTrigger: { trigger: '.faq-content', start: 'top 90%' },
+      gsap.fromTo('.faq-eyebrow', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
+      gsap.fromTo('.faq-title', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.1, ease: 'power3.out' });
+      gsap.fromTo('.faq-intro', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, delay: 0.2, ease: 'power3.out' });
+
+      gsap.utils.toArray<HTMLElement>('.faq-category').forEach(el => {
+        gsap.fromTo(el, { y: 40, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' },
+        });
       });
     }, containerRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-[#F7F6F4] min-h-screen font-sans pb-32">
-      <div className="max-w-[900px] mx-auto px-6 py-12">
-        {/* Header */}
-        <div className="faq-header text-center mb-24">
-          <p className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-4">
-            Häufige Fragen
-          </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans tracking-[0.15em] uppercase mb-8 whitespace-nowrap">
-            Wissenswertes für deinen Besuch
-          </h1>
-          <p className="font-serif italic text-lg text-charcoal/70 max-w-xl mx-auto leading-relaxed">
-            Wir hoffen möglichst viele deiner Fragen hier abzudecken. Gerne kannst du uns auch eine Mail senden.
-          </p>
-        </div>
+    <div ref={containerRef} className="bg-paper min-h-screen pb-32">
+      {/* Hero */}
+      <div className="max-w-[900px] mx-auto px-6 pt-12">
+        <p className="faq-eyebrow text-[11px] heading-caps text-charcoal/50 mb-6">Wissenswertes</p>
+        <h1 className="faq-title text-4xl md:text-6xl lg:text-7xl heading-caps leading-[0.95] mb-8">
+          Häufige<br />Fragen
+        </h1>
+        <p className="faq-intro serif-italic text-lg text-charcoal/55 max-w-lg leading-relaxed">
+          Alles, was du vor deinem Besuch bei uns wissen solltest. Sollte deine Frage nicht dabei sein, schreib uns gerne eine Mail.
+        </p>
+      </div>
 
-        {/* FAQ Groups */}
-        <div className="faq-content flex flex-col gap-16">
-          {faqs.map((group) => (
-            <div key={group.category} className="faq-group">
-              <h3 className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-8 border-b border-charcoal/10 pb-4">
-                {group.category}
-              </h3>
-              <Accordion type="single" collapsible className="w-full">
-                {group.questions.map((item, i) => (
-                  <AccordionItem key={i} value={`${group.category}-${i}`} className="border-charcoal/10">
-                    <AccordionTrigger className="text-left text-base md:text-lg py-6 hover:no-underline hover:text-charcoal/60 transition-colors font-sans tracking-wide">
-                      {item.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-charcoal/70 text-base font-serif leading-relaxed pb-8">
-                      {item.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+      <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
+
+      {/* FAQ Categories */}
+      <div className="max-w-[900px] mx-auto px-6">
+        {faqs.map((group, gi) => (
+          <div key={gi} className="faq-category mb-16 md:mb-20 last:mb-0">
+            {/* Category Header */}
+            <div className="flex items-center gap-4 mb-2">
+              <span className="text-[11px] heading-caps text-charcoal/35">{String(gi + 1).padStart(2, '0')}</span>
+              <h2 className="text-lg md:text-xl heading-caps-tight">{group.category}</h2>
             </div>
-          ))}
-        </div>
 
-        {/* CTA */}
-        <div className="mt-24 text-center">
-          <p className="text-charcoal/60 text-sm mb-6 uppercase tracking-journal">
-            Noch Fragen offen?
-          </p>
-          <a
-            href="mailto:info@truecanvas.at"
-            className="text-lg font-serif italic text-charcoal hover:text-charcoal/60 transition-colors border-b border-charcoal/20 pb-1"
-          >
-            info@truecanvas.at
-          </a>
-        </div>
+            {/* Questions */}
+            <div>
+              {group.questions.map((item, qi) => (
+                <AccordionItem key={qi} question={item.q} answer={item.a} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
+
+      {/* Contact CTA */}
+      <div className="max-w-[900px] mx-auto px-6 text-center">
+        <p className="serif-italic text-lg text-charcoal/55 mb-6">
+          Noch Fragen? Wir helfen gerne weiter.
+        </p>
+        <a
+          href="mailto:info@truecanvas.at"
+          className="text-base serif-italic text-charcoal hover:text-charcoal/60 transition-colors border-b border-charcoal/20 pb-1"
+        >
+          info@truecanvas.at
+        </a>
       </div>
     </div>
   );

@@ -1,103 +1,93 @@
-/* TrueCanvas - Kinfolk-Inspired Global Styles */
-
-/* Remove default root constraints */
-#root {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+/* Heading style */
+.heading-caps {
+  font-family: "Omega Sans", "DM Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 400;
 }
 
-/* Smooth scroll behavior for Lenis */
-html.lenis, html.lenis body {
-  height: auto;
+.heading-caps-tight {
+  font-family: "Omega Sans", "DM Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 400;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+/* Serif italic */
+.serif-italic {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+/* Parallax container */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
 }
 
-.lenis.lenis-stopped {
+.parallax-image {
+  will-change: transform;
+}
+
+/* Fade animation base */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+/* Map grayscale */
+.map-container iframe {
+  filter: grayscale(100%) contrast(1.1);
+  transition: filter 0.6s ease;
+}
+
+.map-container:hover iframe {
+  filter: grayscale(50%) contrast(1.05);
+}
+
+/* Nav blur */
+.nav-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Artist card hover */
+.artist-card img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.6s ease;
+}
+
+.artist-card:hover img {
+  transform: scale(1.03);
+  filter: grayscale(60%);
+}
+
+/* CTA button */
+.cta-button {
+  position: relative;
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+.cta-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
-/* Selection styling */
-::selection {
-  background-color: rgba(11, 13, 16, 0.08);
-  color: inherit;
-}
-
-/* Image loading fade + global grayscale */
-img {
-  transition: opacity 0.6s ease;
-  opacity: 1;
-  filter: grayscale(100%);
-}
-
-/* Keep guest artist preview images in color */
-img.no-grayscale {
-  filter: none;
-}
-
-/* Custom scrollbar for desktop — thin, charcoal */
-@media (min-width: 768px) {
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #F7F6F4;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgba(11, 13, 16, 0.15);
-    border-radius: 2px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(11, 13, 16, 0.3);
-  }
-}
-
-/* Ensure proper text rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-/* Focus visible styles */
-*:focus-visible {
-  outline: 1px solid rgba(11, 13, 16, 0.2);
-  outline-offset: 2px;
-}
-
-/* Remove default button styles */
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Link hover transitions */
-a {
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-/* Hide scrollbar for filter rows */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.cta-button:hover::after {
+  left: 100%;
 }
