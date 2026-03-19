@@ -9,7 +9,6 @@ import { Studio } from './sections/Studio';
 import { Piercing } from './sections/Piercing';
 import { Process } from './sections/Process';
 import { Testimonials } from './sections/Testimonials';
-import { StudioReveal } from './sections/StudioReveal';
 import { StylesShowcase } from './sections/StylesShowcase';
 import { FAQ } from './sections/FAQ';
 import { Contact } from './sections/Contact';
