@@ -104,7 +104,7 @@ export function Testimonials() {
             Kundenstimmen
           </p>
           <h2 className="text-2xl md:text-3xl lg:text-4xl tracking-archive uppercase text-charcoal">
-            Ehrliches Feedback
+            Feedback
           </h2>
         </div>
 
