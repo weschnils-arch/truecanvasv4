@@ -72,7 +72,7 @@ export default function FAQPage() {
           <p className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-4">
             Häufige Fragen
           </p>
-          <h1 className="text-4xl md:text-5xl font-sans tracking-[0.15em] uppercase mb-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans tracking-[0.15em] uppercase mb-8 whitespace-nowrap">
             Wissenswertes für deinen Besuch
           </h1>
           <p className="font-serif italic text-lg text-charcoal/70 max-w-xl mx-auto leading-relaxed">

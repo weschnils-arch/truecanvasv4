@@ -68,7 +68,9 @@ export function Contact() {
             </div>
 
             <a
-              href="mailto:info@truecanvas.at?subject=Terminanfrage"
+              href="https://form.jotform.com/210883790627060"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-premium-dark self-start"
             >
               Termin anfragen

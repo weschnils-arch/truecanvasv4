@@ -23,6 +23,7 @@ import FAQPage from './pages/FAQPage';
 import TattooRemovalPage from './pages/TattooRemovalPage';
 import CareInstructionsPage from './pages/CareInstructionsPage';
 import BlogPage from './pages/BlogPage';
+import PiercingPage from './pages/PiercingPage';
 
 import { siteConfig } from './config';
 import { SectionDivider } from './components/SectionDivider';
@@ -95,6 +96,7 @@ function App() {
         <Route path="/faq" element={<PageWrapper><FAQPage /></PageWrapper>} />
         <Route path="/tattoo-removal" element={<PageWrapper><TattooRemovalPage /></PageWrapper>} />
         <Route path="/care" element={<PageWrapper><CareInstructionsPage /></PageWrapper>} />
+        <Route path="/piercing" element={<PageWrapper><PiercingPage /></PageWrapper>} />
       </Routes>
     </BrowserRouter>
   );

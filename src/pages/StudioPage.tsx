@@ -253,7 +253,9 @@ export default function StudioPage() {
             </div>
 
             <a
-              href="mailto:info@truecanvas.at?subject=Terminanfrage"
+              href="https://form.jotform.com/210883790627060"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-12 py-4 border border-charcoal/15 text-[11px] tracking-archive uppercase text-charcoal hover:bg-charcoal hover:text-paper transition-all duration-500 self-start"
             >
               Termin anfragen

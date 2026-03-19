@@ -194,7 +194,7 @@ export function Hero() {
                   {[
                     { label: 'Tattoo Entfernung', href: '/tattoo-removal' },
                     { label: 'Pflegeempfehlung', href: '/care' },
-                    { label: 'Piercing', href: '#piercing' },
+                    { label: 'Piercing', href: '/piercing' },
                   ].map((item) => (
                     <button
                       key={item.label}
