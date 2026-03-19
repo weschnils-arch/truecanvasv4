@@ -43,7 +43,7 @@ export default function TattooRemovalPage() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-12">
 
         {/* Header */}
-        <div className="removal-header grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24 md:mb-32">
+        <div className="removal-header grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-8 md:mb-12">
           <div>
             <p className="text-[11px] tracking-archive uppercase text-charcoal/60 mb-6">
               In Kooperation mit Dr. Petra Hirtler
