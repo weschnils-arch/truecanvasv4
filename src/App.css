@@ -1,4 +1,4 @@
-/* Heading style */
+/* Heading styles — Omega Sans */
 .heading-caps {
   font-family: "Omega Sans", "DM Sans", system-ui, sans-serif;
   text-transform: uppercase;
@@ -13,65 +13,42 @@
   font-weight: 400;
 }
 
-/* Serif italic */
+/* Previously Playfair italic — kept as class name for compatibility but now Omega Sans Regular per client pick */
 .serif-italic {
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
+  font-family: "Omega Sans", "DM Sans", system-ui, sans-serif;
+  font-style: normal;
   font-weight: 400;
 }
 
-/* Parallax container */
-.parallax-container {
-  overflow: hidden;
-  position: relative;
-}
+.parallax-container { overflow: hidden; position: relative; }
+.parallax-image { will-change: transform; }
 
-.parallax-image {
-  will-change: transform;
-}
+.fade-up { opacity: 0; transform: translateY(30px); }
+.fade-in { opacity: 0; }
 
-/* Fade animation base */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.fade-in {
-  opacity: 0;
-}
-
-/* Map grayscale */
+/* Map — grayscale with only our marker red (handled via custom marker overlay when Google Maps API is used; iframe embed falls back to grayscale base) */
 .map-container iframe {
   filter: grayscale(100%) contrast(1.1);
   transition: filter 0.6s ease;
 }
-
 .map-container:hover iframe {
-  filter: grayscale(50%) contrast(1.05);
+  filter: grayscale(60%) contrast(1.05);
 }
 
-/* Nav blur */
 .nav-blur {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Artist card hover */
 .artist-card img {
   transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), filter 0.6s ease;
 }
-
 .artist-card:hover img {
   transform: scale(1.03);
   filter: grayscale(60%);
 }
 
-/* CTA button */
-.cta-button {
-  position: relative;
-  overflow: hidden;
-}
-
+.cta-button { position: relative; overflow: hidden; }
 .cta-button::after {
   content: "";
   position: absolute;
@@ -79,15 +56,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.08),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
   transition: left 0.5s ease;
 }
-
-.cta-button:hover::after {
-  left: 100%;
-}
+.cta-button:hover::after { left: 100%; }

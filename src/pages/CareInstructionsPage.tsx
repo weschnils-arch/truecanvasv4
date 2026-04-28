@@ -1,50 +1,28 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslate } from '../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const phases = [
-  {
-    period: 'Tag 1 – 7',
-    title: 'Die Membran arbeitet',
-    instructions: [
-      'Solange die Folie auf der Haut ist machst du gar nichts. Nichts. Überhaupt Nichts. Das ist eine der wichtigsten Pflegeempfehlungen überhaupt — überfordere deine Haut nicht.',
-      'Sollte sich in den ersten Stunden eine störende Blase mit Wundflüssigkeit gebildet haben, dann ist das nicht schlimm. Das dickt durch die Verdunstung ein.',
-      'Duschen ist mit der Membran ganz normal möglich.',
-    ],
-  },
-  {
-    period: 'Tag 8',
-    title: 'Folie entfernen',
-    instructions: [
-      'Nach 7 Tagen entfernst du die Membran, indem du sie an einer Ecke oder Kante anhebst und lauwarmes Wasser zwischen Haut und Folie laufen lässt und dann vorsichtig abziehst.',
-      'Wasche die Haut mit warmem Wasser und PH-neutraler Seife mit sauberen, frisch gewaschenen Händen.',
-      'Trockne die Haut anschließend mit einem Einwegtuch (Küchenrolle) tupfend ab.',
-    ],
-  },
-  {
-    period: 'Tag 8 – 22',
-    title: 'Pflege & Heilung',
-    instructions: [
-      'Bis etwa zwei Wochen nach dem Ablösen der Folie wiederholst du das hauchdünne Eincremen (mit sauberen, gewaschenen Händen) täglich 2-3 Mal.',
-      'Verwende ausschließlich die im Studio erhältlichen Aftercare-Cremes.',
-      'Weniger ist mehr — eine dünne Schicht reicht völlig aus.',
-    ],
-  },
+const PHASES = [
+  { periodKey: 'care.phase1.period', titleKey: 'care.phase1.title', instKeys: ['care.phase1.i1', 'care.phase1.i2', 'care.phase1.i3'] },
+  { periodKey: 'care.phase2.period', titleKey: 'care.phase2.title', instKeys: ['care.phase2.i1', 'care.phase2.i2', 'care.phase2.i3'] },
+  { periodKey: 'care.phase3.period', titleKey: 'care.phase3.title', instKeys: ['care.phase3.i1', 'care.phase3.i2', 'care.phase3.i3'] },
 ];
 
-const donts = [
-  { label: '3 – 4 Wochen', text: 'Kein Schwimmbad, Meer oder Badewanne — die Haut quillt auf und die Farbe kann beeinträchtigt werden.' },
-  { label: 'Sonne', text: '3-4 Wochen lang tabu. Danach ist Sonnenschutz mit hohem LSF absolute Pflicht.' },
-  { label: 'Körperpflege', text: 'Keine Saunagänge, Dampfbäder oder intensiver Sport. Schwitzen auf der frischen Wunde unbedingt vermeiden.' },
-  { label: 'Produkte', text: 'Verwende nur die empfohlenen Aftercare-Produkte. Keine parfümierten Lotions oder Cremes.' },
-  { label: 'Kleidung', text: 'Vermeide enge, reibende Kleidung auf dem frischen Tattoo. Lockere, atmungsaktive Stoffe sind ideal.' },
-  { label: 'Berührung', text: 'Nicht kratzen, nicht zupfen. Auch wenn es juckt — lass die Haut in Ruhe heilen.' },
+const DONTS = [
+  { labelKey: 'care.dont1.label', textKey: 'care.dont1.text' },
+  { labelKey: 'care.dont2.label', textKey: 'care.dont2.text' },
+  { labelKey: 'care.dont3.label', textKey: 'care.dont3.text' },
+  { labelKey: 'care.dont4.label', textKey: 'care.dont4.text' },
+  { labelKey: 'care.dont5.label', textKey: 'care.dont5.text' },
+  { labelKey: 'care.dont6.label', textKey: 'care.dont6.text' },
 ];
 
 export default function CareInstructionsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,38 +50,33 @@ export default function CareInstructionsPage() {
 
   return (
     <div ref={containerRef} className="bg-paper min-h-screen pb-32">
-      {/* Hero */}
       <div className="max-w-[1000px] mx-auto px-6 pt-12">
-        <p className="ci-eyebrow text-[11px] heading-caps text-charcoal/50 mb-6">Aftercare</p>
+        <p className="ci-eyebrow text-[11px] heading-caps text-charcoal/50 mb-6">{t('care.eyebrow')}</p>
         <h1 className="ci-title text-4xl md:text-6xl lg:text-7xl heading-caps leading-[0.95] mb-8">
-          Pflege deines<br />neuen Tattoos
+          {t('care.title.l1')}<br />{t('care.title.l2')}
         </h1>
-        <p className="ci-quote serif-italic text-xl md:text-2xl text-charcoal/55 max-w-xl leading-relaxed">
-          "Ein perfektes Ergebnis braucht die richtige Heilung."
+        <p className="ci-quote text-xl md:text-2xl text-charcoal/70 max-w-xl leading-[1.65]">
+          {t('care.quote')}
         </p>
       </div>
 
       <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
 
-      {/* Timeline Phases */}
       <div className="max-w-[1000px] mx-auto px-6">
         <div className="space-y-16 md:space-y-24">
-          {phases.map((phase, i) => (
+          {PHASES.map((phase, i) => (
             <div key={i} className="ci-phase grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-              {/* Left — label */}
               <div className="md:col-span-4">
                 <span className="text-[48px] md:text-[64px] heading-caps text-charcoal/[0.06] leading-none block -mb-2">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <p className="text-[11px] heading-caps text-charcoal/45 mb-1">{phase.period}</p>
-                <h3 className="text-lg md:text-xl heading-caps-tight">{phase.title}</h3>
+                <p className="text-[11px] heading-caps text-charcoal/45 mb-1">{t(phase.periodKey)}</p>
+                <h3 className="text-lg md:text-xl heading-caps-tight">{t(phase.titleKey)}</h3>
               </div>
-
-              {/* Right — content */}
               <div className="md:col-span-8 space-y-4">
-                {phase.instructions.map((text, j) => (
-                  <p key={j} className="text-charcoal/60 text-base leading-relaxed">
-                    {text}
+                {phase.instKeys.map((k, j) => (
+                  <p key={j} className="text-charcoal/70 text-base leading-[1.85]">
+                    {t(k)}
                   </p>
                 ))}
               </div>
@@ -114,19 +87,18 @@ export default function CareInstructionsPage() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-16 md:my-24" />
 
-      {/* Do's & Don'ts — dark section */}
       <div className="bg-charcoal text-paper py-16 md:py-24">
         <div className="max-w-[1000px] mx-auto px-6">
-          <p className="text-[11px] heading-caps text-paper/40 mb-4">Wichtig</p>
+          <p className="text-[11px] heading-caps text-paper/40 mb-4">{t('care.donts.eyebrow')}</p>
           <h2 className="text-2xl md:text-4xl heading-caps leading-[1.05] mb-12 md:mb-16">
-            Was du tun oder<br />lassen sollst
+            {t('care.donts.title.l1')}<br />{t('care.donts.title.l2')}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
-            {donts.map((item, i) => (
+            {DONTS.map((item, i) => (
               <div key={i} className="ci-dont">
-                <p className="text-[11px] heading-caps text-paper/35 mb-2">{item.label}</p>
-                <p className="text-paper/70 text-base leading-relaxed">{item.text}</p>
+                <p className="text-[11px] heading-caps text-paper/35 mb-2">{t(item.labelKey)}</p>
+                <p className="text-paper/70 text-base leading-[1.85]">{t(item.textKey)}</p>
               </div>
             ))}
           </div>
@@ -135,17 +107,16 @@ export default function CareInstructionsPage() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
 
-      {/* Important Note */}
       <div className="max-w-[1000px] mx-auto px-6 py-12">
         <div className="max-w-xl mx-auto text-center">
-          <p className="serif-italic text-xl text-charcoal/55 leading-relaxed mb-8">
-            "Sollte etwas nicht so aussehen wie erwartet oder du dir unsicher sein, melde dich jederzeit bei uns."
+          <p className="text-xl text-charcoal/70 leading-[1.65] mb-8">
+            {t('care.contact.quote')}
           </p>
-          <div className="space-y-3 text-sm text-charcoal/50">
+          <div className="space-y-3 text-sm text-charcoal/60">
             <p>Weyringergasse 19/1-3, 1040 Wien</p>
             <a
               href="mailto:info@truecanvas.at"
-              className="serif-italic text-charcoal hover:text-charcoal/60 transition-colors border-b border-charcoal/20 pb-0.5 inline-block"
+              className="text-charcoal hover:text-charcoal/60 transition-colors border-b border-charcoal/20 pb-0.5 inline-block"
             >
               info@truecanvas.at
             </a>
