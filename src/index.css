@@ -14,8 +14,8 @@
   --color-warm-gray: #D4D0CB;
   --color-mid-gray: #8A8580;
   --color-accent-red: #D92B2B;
-  --font-sans: "Omega Sans", "DM Sans", system-ui, sans-serif;
-  --font-serif: "Omega Sans", "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
   --font-heading: "Omega Sans", "DM Sans", system-ui, sans-serif;
 }
 
@@ -29,9 +29,14 @@ body {
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.75;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+p, li {
+  font-family: var(--font-sans);
 }
 
 ::-webkit-scrollbar { width: 6px; }

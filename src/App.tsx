@@ -517,7 +517,7 @@ export default function App() {
         <Suspense fallback={<div className="min-h-screen bg-paper" />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/artists" element={<PageWrapper><ArtistsPage /></PageWrapper>} />
+            <Route path="/artists" element={<PageWrapper withCTA={false}><ArtistsPage /></PageWrapper>} />
             <Route path="/guestartists" element={<PageWrapper><GuestArtists /></PageWrapper>} />
             <Route path="/studio" element={<PageWrapper><StudioPage /></PageWrapper>} />
             <Route path="/blog" element={<PageWrapper><BlogPage /></PageWrapper>} />

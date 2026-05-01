@@ -146,11 +146,22 @@ const t: Translations = {
   /* ───────── ARTISTS PAGE ───────── */
   'artists.eyebrow': { de: 'Das Kollektiv', en: 'The Collective' },
   'artists.title': { de: 'Unsere Artists', en: 'Our Artists' },
-  // V3 ArtistsPage verbatim, only swapping "Sieben" → "Vier" because client wants 4 residents
   'artists.intro': {
-    de: 'Vier Künstler. Vier Handschriften. Vereint unter einem Dach im Herzen Wiens.',
-    en: 'Four artists. Four signatures. Under one roof in the heart of Vienna.',
+    de: 'Acht Künstler. Acht Handschriften. Vereint unter einem Dach im Herzen Wiens.',
+    en: 'Eight artists. Eight signatures. Under one roof in the heart of Vienna.',
   },
+  'artists.cta.title': { de: 'Bereit für dein Projekt?', en: 'Ready for your project?' },
+  'artists.cta.text': {
+    de: 'Sende uns deine Idee und wir verbinden dich mit dem passenden Artist.',
+    en: 'Send us your idea and we’ll connect you with the right artist.',
+  },
+  'artists.cta.button': { de: 'Termin anfragen', en: 'Request appointment' },
+  'artists.recruit.title': { de: 'Resident werden?', en: 'Want to become a resident?' },
+  'artists.recruit.text': {
+    de: 'Wir freuen uns über Bewerbungen von Artists, die unsere Werte teilen.',
+    en: 'We welcome applications from artists who share our values.',
+  },
+  'artists.recruit.button': { de: 'Jetzt bewerben', en: 'Apply now' },
   'artists.filter.all': { de: 'Alle', en: 'All' },
   'artists.more': { de: 'Mehr', en: 'More' },
   'artists.less': { de: 'Weniger', en: 'Less' },
@@ -191,20 +202,21 @@ const t: Translations = {
   },
   'studio.rooms.eyebrow': { de: 'Drei Räume — eine Vision', en: 'Three Rooms — One Vision' },
   // PLATZHALTER-Texte — vom Client final zu liefern
-  'studio.room1.name': { de: 'Studio 1 — Platzhalter', en: 'Studio 1 — Placeholder' },
+  'studio.room1.name': { de: 'Der Empfang', en: 'The Reception' },
   'studio.room1.text': {
-    de: '[Platzhalter] Hier kommt der finale Beschreibungstext zum ersten Studio hin. Atmosphäre, Charakter und was diesen Raum besonders macht.',
-    en: '[Placeholder] Final descriptive text for Studio 1 goes here. Atmosphere, character and what makes this room special.',
+    de: 'Ein einladender Raum mit warmem Licht und durchdachtem Design. Hier beginnt dein Tattoo-Erlebnis — entspannt, persönlich und mit voller Aufmerksamkeit auf dich.',
+    en: 'A welcoming room with warm light and thoughtful design. This is where your tattoo experience begins — relaxed, personal and with full attention on you.',
   },
-  'studio.room2.name': { de: 'Studio 2 — Platzhalter', en: 'Studio 2 — Placeholder' },
+  // Studio 2 + 3 — V3 verbatim
+  'studio.room2.name': { de: 'Das Atelier', en: 'The Atelier' },
   'studio.room2.text': {
-    de: '[Platzhalter] Hier kommt der finale Beschreibungstext zum zweiten Studio hin. Atmosphäre, Charakter und was diesen Raum besonders macht.',
-    en: '[Placeholder] Final descriptive text for Studio 2 goes here. Atmosphere, character and what makes this room special.',
+    de: 'Hell, modern und auf Präzision ausgelegt. Unser zweites Studio bietet Platz für detailreiches Arbeiten in ruhiger Atmosphäre — mit natürlichem Licht und professionellem Equipment.',
+    en: 'Bright, modern and built for precision. Our second studio offers space for detailed work in a calm atmosphere — with natural light and professional equipment.',
   },
-  'studio.room3.name': { de: 'Studio 3 — Platzhalter', en: 'Studio 3 — Placeholder' },
+  'studio.room3.name': { de: 'Das Gewölbe', en: 'The Vault' },
   'studio.room3.text': {
-    de: '[Platzhalter] Hier kommt der finale Beschreibungstext zum dritten Studio hin. Atmosphäre, Charakter und was diesen Raum besonders macht.',
-    en: '[Placeholder] Final descriptive text for Studio 3 goes here. Atmosphere, character and what makes this room special.',
+    de: 'Unter historischen Bögen entsteht zeitgenössische Kunst. Das größte unserer drei Studios vereint Wiener Altbau-Charme mit moderner Tattoo-Ausstattung.',
+    en: 'Under historic arches, contemporary art comes to life. The largest of our three studios unites Viennese period charm with modern tattoo equipment.',
   },
   'studio.pullquote': {
     de: 'Ein kuratierter Raum, in dem Tätowieren zur Kunst wird.',

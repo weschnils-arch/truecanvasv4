@@ -85,6 +85,7 @@ function MiniSlideshow({ images, alt }: { images: string[]; alt: string }) {
 
 export default function StudioPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const wideImageRef = useRef<HTMLDivElement>(null);
   const t = useTranslate();
 
   useEffect(() => {
@@ -93,6 +94,22 @@ export default function StudioPage() {
       gsap.fromTo('.sp-eyebrow', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' });
       gsap.fromTo('.sp-title', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.1, ease: 'power3.out' });
       gsap.fromTo('.sp-intro p', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, delay: 0.3, ease: 'power3.out' });
+
+      if (wideImageRef.current) {
+        const img = wideImageRef.current.querySelector('img');
+        if (img) {
+          gsap.to(img, {
+            yPercent: -15,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: wideImageRef.current,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.5,
+            },
+          });
+        }
+      }
 
       gsap.utils.toArray<HTMLElement>('.sp-studio-block').forEach(el => {
         gsap.fromTo(el,
@@ -135,6 +152,20 @@ export default function StudioPage() {
           <p className="text-[16px] text-charcoal/75 leading-[1.9]">{t('studio.p1')}</p>
           <p className="text-[16px] text-charcoal/75 leading-[1.9]">{t('studio.p2')}</p>
         </div>
+      </div>
+
+      {/* V2 full-bleed wide image with parallax */}
+      <div
+        ref={wideImageRef}
+        className="w-full overflow-hidden my-16 md:my-24"
+        style={{ height: '70vh' }}
+      >
+        <img
+          src="/images/studio/JollySchwarz-4189.webp"
+          alt="True Canvas Studio Lounge"
+          className="w-full h-[120%] object-cover"
+          loading="lazy"
+        />
       </div>
 
       <div className="section-divider mx-8 md:mx-20 my-8" />

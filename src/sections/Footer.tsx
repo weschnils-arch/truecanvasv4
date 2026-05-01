@@ -12,8 +12,7 @@ const EMAIL = 'info@truecanvas.at';
 const ADDRESS_LINE1 = 'Weyringergasse 19/1-3';
 const ADDRESS_LINE2_DE = '1040 Wien';
 const ADDRESS_LINE2_EN = '1040 Vienna';
-// TODO: Nils — confirm WhatsApp channel URL from client
-const WHATSAPP_URL = 'https://whatsapp.com/channel/REPLACE_WITH_REAL_INVITE';
+const WHATSAPP_URL = 'https://whatsapp.com/channel/0029Vb7vegp0gcfA1Yi7a71f';
 const INSTAGRAM_URL = 'https://instagram.com/truecanvas';
 
 export function Footer() {
