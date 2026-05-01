@@ -78,7 +78,12 @@ export function Hero({
           src={imageSrc}
           alt={imageAlt}
           className="w-full h-full object-cover"
-          style={{ filter: 'grayscale(100%)' }}
+          style={{
+            filter: 'grayscale(100%)',
+            objectPosition: '72% center',
+            transform: 'scale(1.18)',
+            transformOrigin: '72% center',
+          }}
         />
         <div className="absolute inset-0 bg-charcoal/30" />
       </div>

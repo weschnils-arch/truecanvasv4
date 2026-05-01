@@ -63,10 +63,10 @@ export default function ArtistsPage() {
         <div className="ap-pills flex flex-wrap gap-2 mb-4">
           <button
             onClick={() => setActiveStyleId(null)}
-            className={`text-[11px] heading-caps px-5 py-2.5 rounded-full border transition-all duration-300 ${
+            className={`text-[13px] heading-caps px-6 py-3 rounded-full border transition-all duration-300 ${
               activeStyleId === null
                 ? 'bg-charcoal text-paper border-charcoal'
-                : 'text-charcoal/50 border-charcoal/12 hover:border-charcoal/30'
+                : 'text-charcoal border-charcoal/25 hover:border-charcoal hover:bg-charcoal/5'
             }`}
           >
             {t('artists.filter.all')}
@@ -75,17 +75,17 @@ export default function ArtistsPage() {
             <button
               key={s.id}
               onClick={() => setActiveStyleId(s.id)}
-              className={`text-[11px] heading-caps px-5 py-2.5 rounded-full border transition-all duration-300 ${
+              className={`text-[13px] heading-caps px-6 py-3 rounded-full border transition-all duration-300 ${
                 activeStyleId === s.id
                   ? 'bg-charcoal text-paper border-charcoal'
-                  : 'text-charcoal/50 border-charcoal/12 hover:border-charcoal/30'
+                  : 'text-charcoal border-charcoal/25 hover:border-charcoal hover:bg-charcoal/5'
               }`}
             >
               {lang === 'en' ? s.nameEn : s.name}
             </button>
           ))}
         </div>
-        <p className="text-[11px] heading-caps text-charcoal/35 mb-10">
+        <p className="text-[12px] heading-caps text-charcoal/55 mb-10">
           {filtered.length} {filtered.length === 1 ? 'Artist' : 'Artists'}
         </p>
       </div>
