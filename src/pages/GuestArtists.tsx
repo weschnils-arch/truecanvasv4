@@ -125,13 +125,13 @@ export default function GuestArtists() {
               href={artist.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="ga-card group"
+              className="ga-card group color"
             >
-              <div className="overflow-hidden mb-2">
+              <div className="overflow-hidden mb-2 color">
                 <img
                   src={artist.image}
                   alt={artist.name}
-                  className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="color w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
