@@ -70,17 +70,6 @@ export default function TattooRemovalPage() {
       <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-20 md:mb-28">
-        <div className="tr-hero-img overflow-hidden max-w-[200px]" style={{ clipPath: 'inset(0 100% 0 0)' }}>
-          <img
-            src="/images/tattooentfernung.webp"
-            alt={t('laser.doctor.name')}
-            className="w-full aspect-square object-cover object-center"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-20 md:mb-28">
         <div className="tr-content grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           <div className="lg:col-span-5">
             <p className="text-xl md:text-2xl text-charcoal/70 leading-[1.65]">
@@ -115,23 +104,35 @@ export default function TattooRemovalPage() {
       <div className="h-px bg-gradient-to-r from-transparent via-charcoal/15 to-transparent my-12 md:my-16" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-24">
-        <div className="tr-content max-w-2xl">
-          <p className="text-[11px] heading-caps text-charcoal/40 mb-6">{t('laser.doctor.eyebrow')}</p>
-          <h2 className="text-3xl md:text-4xl heading-caps leading-[1.05] mb-4">
-            {t('laser.doctor.name')}
-          </h2>
-          <p className="text-[12px] heading-caps text-charcoal/45 mb-8">{t('laser.doctor.location')}</p>
-          <p className="text-charcoal/70 text-base leading-[1.9] mb-10 max-w-lg">
-            {t('laser.doctor.text')}
-          </p>
-          <a
-            href="https://www.tattooentfernung-wien.at/termin-medizin-am-hauptbahnhof/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-12 py-4 border border-charcoal/15 text-[11px] heading-caps text-charcoal hover:bg-charcoal hover:text-paper transition-all duration-500"
-          >
-            {t('laser.doctor.cta')}
-          </a>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+          <div className="md:col-span-5">
+            <div className="overflow-hidden">
+              <img
+                src="/images/tattooentfernung.webp"
+                alt={t('laser.doctor.name')}
+                className="w-full aspect-[4/5] object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div className="md:col-span-7">
+            <p className="text-[11px] heading-caps text-charcoal/40 mb-6">{t('laser.doctor.eyebrow')}</p>
+            <h2 className="text-3xl md:text-4xl heading-caps leading-[1.05] mb-4">
+              {t('laser.doctor.name')}
+            </h2>
+            <p className="text-[12px] heading-caps text-charcoal/45 mb-8">{t('laser.doctor.location')}</p>
+            <p className="text-charcoal/70 text-base leading-[1.9] mb-10 max-w-lg">
+              {t('laser.doctor.text')}
+            </p>
+            <a
+              href="https://www.tattooentfernung-wien.at/termin-medizin-am-hauptbahnhof/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-12 py-4 border border-charcoal/15 text-[11px] heading-caps text-charcoal hover:bg-charcoal hover:text-paper transition-all duration-500"
+            >
+              {t('laser.doctor.cta')}
+            </a>
+          </div>
         </div>
       </div>
 

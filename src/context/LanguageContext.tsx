@@ -125,10 +125,10 @@ const t: Translations = {
   'faq.allcta':       { de: 'Alle Fragen ansehen', en: 'View All Questions' },
 
   /* ───────── CTA BAND ───────── */
-  'cta.title': { de: 'Bereit für dein Projekt', en: 'Ready for Your Project' },
+  'cta.title': { de: 'Bereit für dein Projekt?', en: 'Ready for your project?' },
   'cta.subtitle': {
-    de: 'Beschreibe uns kurz deine Idee, die gewünschte Stelle und den Stil. Wir melden uns zeitnah.',
-    en: 'Briefly describe your idea, the desired placement and the style. We\'ll get back to you shortly.',
+    de: 'Sende uns deine Idee und wir verbinden dich mit dem passenden Artist.',
+    en: 'Send us your idea and we’ll connect you with the right artist.',
   },
 
   /* ───────── FOOTER ───────── */

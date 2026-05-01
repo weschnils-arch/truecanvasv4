@@ -157,8 +157,8 @@ export default function GuestArtists() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 pb-32 border-t border-charcoal/10 pt-16">
         <div className="max-w-2xl">
           <p className="text-[11px] heading-caps text-charcoal/50 mb-6">{t('guest.apply.eyebrow')}</p>
-          <h2 className="text-3xl md:text-4xl heading-caps leading-[1.05] mb-6">
-            {t('guest.apply.title.l1')}<br />{t('guest.apply.title.l2')}
+          <h2 className="text-3xl md:text-4xl heading-caps leading-[1.05] mb-6 whitespace-nowrap">
+            {t('guest.apply.title.l1')} {t('guest.apply.title.l2')}
           </h2>
           <p className="text-[15px] text-charcoal/70 leading-[1.9] mb-10 max-w-lg">
             {t('guest.apply.text')}

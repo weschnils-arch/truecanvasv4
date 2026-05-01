@@ -131,7 +131,7 @@ export function Footer() {
               aria-label={t('footer.findus')}
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.0!2d16.366!3d48.193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sWeyringergasse+19%2C+1040+Wien!5e0!3m2!1sde!2sat!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5500.0!2d16.371!3d48.190!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sWeyringergasse+19%2C+1040+Wien!5e0!3m2!1sde!2sat!4v1"
                 width="100%"
                 height="100%"
                 style={{ border: 0, pointerEvents: 'none' }}

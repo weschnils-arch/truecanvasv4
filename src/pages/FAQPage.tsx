@@ -106,8 +106,8 @@ export default function FAQPage() {
     <div ref={containerRef} className="bg-paper min-h-screen pb-32">
       <div className="max-w-[900px] mx-auto px-6 pt-12">
         <p className="faq-eyebrow text-[11px] heading-caps text-charcoal/50 mb-6">{t('faqp.eyebrow')}</p>
-        <h1 className="faq-title text-4xl md:text-6xl lg:text-7xl heading-caps leading-[0.95] mb-8">
-          {t('faqp.title.l1')}<br />{t('faqp.title.l2')}
+        <h1 className="faq-title text-4xl md:text-6xl lg:text-7xl heading-caps leading-[0.95] mb-8 whitespace-nowrap">
+          {t('faqp.title.l1')} {t('faqp.title.l2')}
         </h1>
         <p className="faq-intro text-lg text-charcoal/70 max-w-lg leading-[1.75]">
           {t('faqp.intro')}

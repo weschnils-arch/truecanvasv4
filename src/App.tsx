@@ -258,24 +258,22 @@ function Divider() {
   return <div className="section-divider mx-8 md:mx-20 my-8 md:my-12" />;
 }
 
-/* ─── CTA Band (white, Omega Sans) ─── */
+/* ─── CTA Band — V3 layout (left text + right outline button on charcoal) ─── */
 function CTABand() {
   const bookingUrl = useBookingUrl();
   const t = useTranslate();
   return (
-    <section className="bg-charcoal py-20 md:py-28">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 text-center">
-        <h2 className="text-white text-3xl md:text-5xl heading-caps-tight mb-6">
-          {t('cta.title')}
-        </h2>
-        <p className="text-white/70 text-[15px] leading-[1.9] max-w-xl mx-auto mb-10">
-          {t('cta.subtitle')}
-        </p>
+    <section className="bg-charcoal text-paper py-20 md:py-28">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+        <div>
+          <h2 className="text-2xl md:text-3xl heading-caps-tight mb-3">{t('cta.title')}</h2>
+          <p className="text-paper/60 max-w-md">{t('cta.subtitle')}</p>
+        </div>
         <a
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="cta-button inline-block px-12 py-4 border border-white/40 text-[12px] heading-caps text-white hover:bg-white hover:text-charcoal transition-all duration-500"
+          className="inline-block px-12 py-4 border border-paper/20 text-[11px] heading-caps text-paper hover:bg-paper hover:text-charcoal transition-all duration-500"
         >
           {t('nav.cta')}
         </a>
@@ -485,6 +483,9 @@ function HomePage() {
 
       {/* ─── V2 FAQ — client: "FAQs gefällt uns" ─── */}
       <FAQ />
+
+      {/* ─── V3-style CTA before footer ─── */}
+      <CTABand />
 
       <Footer />
     </main>
