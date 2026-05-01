@@ -74,7 +74,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
       ? 'bg-paper/90 backdrop-blur-md border-b border-charcoal/5'
       : 'bg-paper/80 backdrop-blur-sm';
 
-  const navLinkBase = 'text-[13px] heading-caps transition-colors duration-500 hover:opacity-60';
+  const navLinkBase = 'text-[15px] font-medium tracking-[0.04em] transition-colors duration-500 hover:opacity-60';
 
   const EXTRAS_LINKS = [
     { label: t('nav.removal'),   href: '/laserentfernung' },
@@ -95,7 +95,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
           <img
             src={logoSrc}
             alt="True Canvas"
-            className={`h-11 w-11 object-contain transition-all duration-700 ${overHero ? 'invert' : ''}`}
+            className={`h-14 w-14 object-contain transition-all duration-700 ${overHero ? 'invert' : ''}`}
             style={{ filter: overHero ? 'invert(1)' : 'none' }}
           />
         </Link>
@@ -174,7 +174,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
 
           <button
             onClick={toggleLang}
-            className={`text-[13px] heading-caps transition-colors duration-500 ${overHero ? 'text-white/70 hover:text-white' : 'text-charcoal/50 hover:text-charcoal'}`}
+            className={`text-[14px] font-medium tracking-[0.04em] transition-colors duration-500 ${overHero ? 'text-white/70 hover:text-white' : 'text-charcoal/50 hover:text-charcoal'}`}
           >
             {lang === 'de' ? 'EN' : 'DE'}
           </button>
@@ -184,7 +184,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-[13px] heading-caps px-6 py-3 border transition-all duration-500 inline-flex items-center justify-center w-[230px] whitespace-nowrap ${
+            className={`text-[14px] font-medium tracking-[0.04em] px-6 py-3 border transition-all duration-500 inline-flex items-center justify-center w-[230px] whitespace-nowrap ${
               overHero
                 ? 'border-white/40 text-white hover:bg-white hover:text-charcoal'
                 : 'border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-paper'
@@ -218,7 +218,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
             <button
               key={item.label}
               onClick={() => handleNavClick(item.href)}
-              className="text-[13px] heading-caps text-left text-charcoal"
+              className="text-[14px] font-medium tracking-[0.04em] text-left text-charcoal"
             >
               {item.label}
             </button>
@@ -227,14 +227,14 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
             href="https://form.jotform.com/253372602051346"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[13px] heading-caps text-left text-charcoal"
+            className="text-[14px] font-medium tracking-[0.04em] text-left text-charcoal"
           >
             {t('nav.vouchers')} ↗
           </a>
           <div className="flex items-center gap-6 pt-4">
             <button
               onClick={toggleLang}
-              className="text-[13px] heading-caps text-charcoal/50 hover:text-charcoal transition-colors"
+              className="text-[14px] font-medium tracking-[0.04em] text-charcoal/50 hover:text-charcoal transition-colors"
             >
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
@@ -242,7 +242,7 @@ function Navigation({ transparent = false }: { transparent?: boolean }) {
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] heading-caps px-6 py-3 border border-charcoal/20 text-charcoal self-start inline-flex items-center justify-center w-[230px] whitespace-nowrap"
+              className="text-[14px] font-medium tracking-[0.04em] px-6 py-3 border border-charcoal/20 text-charcoal self-start inline-flex items-center justify-center w-[230px] whitespace-nowrap"
             >
               {t('nav.cta')}
             </a>

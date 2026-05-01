@@ -123,18 +123,38 @@ export function Footer() {
             <p className="text-[11px] heading-caps text-charcoal/50 mb-5 pb-3 border-b border-charcoal/10">
               {t('footer.findus')}
             </p>
-            <div className="map-container aspect-[4/3] overflow-hidden">
+            <a
+              href="https://www.google.com/maps/place/Weyringergasse+19,+1040+Wien"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="map-container relative block aspect-[4/3] overflow-hidden"
+              aria-label={t('footer.findus')}
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.0!2d16.366!3d48.193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sWeyringergasse+19%2C+1040+Wien!5e0!3m2!1sde!2sat!4v1"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, pointerEvents: 'none' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="True Canvas Studio — Weyringergasse 19, 1040 Wien"
               />
-            </div>
+              <span
+                aria-hidden="true"
+                className="map-pin pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full"
+              >
+                <svg width="34" height="44" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 0C5.4 0 0 5.4 0 12c0 9 12 20 12 20s12-11 12-20c0-6.6-5.4-12-12-12z"
+                    fill="#D92B2B"
+                    stroke="#7F1A1A"
+                    strokeWidth="0.8"
+                  />
+                  <circle cx="12" cy="12" r="4.2" fill="#F7F6F4" />
+                </svg>
+              </span>
+            </a>
           </div>
         </div>
 
